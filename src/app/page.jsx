@@ -1,26 +1,11 @@
-import DashBoardLayerOne from "@/components/DashBoardLayerOne";
-import MasterLayout from "@/masterLayout/MasterLayout";
-import { Breadcrumb } from "react-bootstrap";
+import LandingLayer from "@/components/LandingLayer";
 
 export const metadata = {
-  title: "WowDash NEXT JS - Admin Dashboard Multipurpose Bootstrap 5 Template",
+  title: "Dodisha — Odisha District Data, Open & Real-Time",
   description:
-    "Wowdash NEXT JS is a developer-friendly, ready-to-use admin template designed for building attractive, scalable, and high-performing web applications.",
+    "Free, real-time, district-level civic transparency platform for Odisha. Data sourced from official government portals under India's Open Data Policy.",
 };
 
-const Page = () => {
-  return (
-    <>
-      {/* MasterLayout */}
-      <MasterLayout>
-        {/* Breadcrumb */}
-        <Breadcrumb title='AI' />
-
-        {/* DashBoardLayerOne */}
-        <DashBoardLayerOne />
-      </MasterLayout>
-    </>
-  );
-};
-
-export default Page;
+export default function Page() {
+  return <LandingLayer />;
+}
