@@ -112,51 +112,131 @@ export default function DistrictOverview({ district }) {
 
       {/* ══ HERO ══════════════════════════════════════════════════════════ */}
       <div style={{ background: C.hero, borderBottom: `1px solid ${C.heroBdr}` }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto", padding: "28px 28px 24px" }}>
+        <div style={{ maxWidth: 1080, margin: "0 auto", padding: "24px 28px 0" }}>
 
-          {/* Breadcrumb */}
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.72rem", color: C.muted, marginBottom: 14 }}>
-            <span style={{ color: "#3b82f6", fontWeight: 600 }}>Odisha</span>
+          {/* Breadcrumb + live badge */}
+          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "0.72rem", color: C.muted, marginBottom: 20 }}>
+            <a href="/" style={{ color: "#3b82f6", fontWeight: 600, textDecoration: "none" }}>Dodisha</a>
             <span>›</span>
-            <span style={{ fontWeight: 500, color: C.text }}>{name}</span>
+            <span style={{ color: C.muted }}>Odisha</span>
+            <span>›</span>
+            <span style={{ fontWeight: 600, color: C.text }}>{name}</span>
             <span style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 5 }}>
               <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#059669", display: "inline-block" }} />
-              <span style={{ color: "#059669", fontWeight: 600 }}>Live Data</span>
+              <span style={{ color: "#059669", fontWeight: 600 }}>Live</span>
             </span>
           </div>
 
-          {/* Title row */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: 16, marginBottom: 16 }}>
-            <div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 12, flexWrap: "wrap" }}>
-                <h1 style={{ margin: 0, fontWeight: 900, fontSize: "clamp(1.6rem,4vw,2.4rem)", letterSpacing: "-1px", color: C.text }}>{name}</h1>
-                <span style={{ fontSize: "1rem", color: C.muted, fontWeight: 400 }}>{data.odia}</span>
-              </div>
-              <p style={{ margin: "4px 0 0", fontSize: "0.85rem", color: C.muted, fontStyle: "italic" }}>"{data.tagline}" · Odisha</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 10 }}>
-                {data.tags.map(t => (
-                  <span key={t} style={{ fontSize: "0.7rem", background: isDark ? "#273142" : "#f1f5f9", border: `1px solid ${C.bdr}`, borderRadius: 6, padding: "3px 10px", color: C.muted, fontWeight: 500 }}>{t}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* Dev score badge */}
-            <div style={{ textAlign: "center", background: isDark ? "#273142" : "#f8fafc", border: `1px solid ${C.bdr}`, borderRadius: 12, padding: "14px 22px" }}>
-              <div style={{ fontSize: "2rem", fontWeight: 900, color: data.devScore >= 70 ? "#059669" : "#d97706", lineHeight: 1 }}>{data.devScore}</div>
-              <div style={{ fontSize: "0.65rem", fontWeight: 700, color: C.muted, marginTop: 4, textTransform: "uppercase", letterSpacing: "0.06em" }}>Dev Index</div>
-            </div>
+          {/* ① District name + Odia script */}
+          <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap", marginBottom: 6 }}>
+            <h1 style={{
+              margin: 0,
+              fontWeight: 900,
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              letterSpacing: "-1.5px",
+              color: C.text,
+              lineHeight: 1,
+            }}>
+              {name}
+            </h1>
+            <span style={{
+              fontSize: "1.3rem",
+              color: C.muted,
+              fontWeight: 400,
+              letterSpacing: "0.02em",
+            }}>
+              {data.odia}
+            </span>
           </div>
 
-          {/* Key stats strip */}
-          <div style={grid3}>
+          {/* ② Tagline */}
+          <p style={{
+            margin: "0 0 18px",
+            fontSize: "1rem",
+            color: isDark ? "#94a3b8" : "#64748b",
+            fontWeight: 400,
+            fontStyle: "italic",
+            letterSpacing: "0.01em",
+          }}>
+            "{data.tagline}" &mdash; Odisha, India
+          </p>
+
+          {/* ③ Tags */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 10 }}>
+            {data.tags.map(t => (
+              <span key={t} style={{
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                background: isDark ? "#1e2839" : "#f1f5f9",
+                border: `1px solid ${isDark ? "#334155" : "#e2e8f0"}`,
+                borderRadius: 6,
+                padding: "4px 12px",
+                color: isDark ? "#94a3b8" : "#374151",
+              }}>
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {/* ④ Awards */}
+          {data.awards?.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 24 }}>
+              {data.awards.map(a => (
+                <span key={a} style={{
+                  fontSize: "0.7rem",
+                  fontWeight: 600,
+                  background: isDark ? "#1c2a1c" : "#f0fdf4",
+                  border: `1px solid ${isDark ? "#14532d" : "#bbf7d0"}`,
+                  borderRadius: 6,
+                  padding: "4px 12px",
+                  color: isDark ? "#4ade80" : "#166534",
+                }}>
+                  {a}
+                </span>
+              ))}
+            </div>
+          )}
+
+          {/* ⑤ Stats strip — full-width, flush to bottom */}
+          <div style={{
+            borderTop: `1px solid ${C.heroBdr}`,
+            display: "flex",
+            flexWrap: "wrap",
+          }}>
             {[
-              { label: "Population",  value: data.pop },
-              { label: "Area",        value: data.area },
-              { label: "Literacy",    value: data.lit },
-              { label: "Blocks",      value: data.blocks },
-              { label: "State Total", value: ODISHA_STATE.pop + " Odisha" },
-              { label: "Districts",   value: ODISHA_STATE.districts + " districts" },
-            ].map(s => <StatChip key={s.label} {...s} isDark={isDark} />)}
+              { icon: "👥", label: "Population",       value: data.pop },
+              { icon: "📐", label: "Total Area",        value: data.area },
+              { icon: "📚", label: "Literacy Rate",     value: data.lit },
+              { icon: "🏘️", label: "Blocks",            value: data.blocks },
+              { icon: "🏡", label: "Villages",          value: data.villages?.toLocaleString() ?? "—" },
+              { icon: "🗳️", label: "Gram Panchayats",   value: data.gps?.toLocaleString() ?? "—" },
+              { icon: "🗂️", label: "Subdivisions",      value: data.subdivisions ?? "—" },
+              { icon: "📊", label: "Dev Index",         value: `${data.devScore}/100` },
+            ].map(({ icon, label, value }, i, arr) => (
+              <div key={label} style={{
+                flex: "1 1 120px",
+                padding: "16px 18px",
+                borderRight: i < arr.length - 1 ? `1px solid ${C.heroBdr}` : "none",
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+              }}>
+                <span style={{ fontSize: "0.65rem", color: C.muted, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                  {icon} {label}
+                </span>
+                <span style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 800,
+                  color: label === "Dev Index"
+                    ? (data.devScore >= 70 ? "#059669" : "#d97706")
+                    : C.text,
+                  letterSpacing: "-0.3px",
+                  lineHeight: 1.2,
+                }}>
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

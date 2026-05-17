@@ -42,7 +42,9 @@ export const DISTRICT_DATA = {
   cuttack: {
     odia: "କଟକ", tagline: "Silver City of Odisha",
     tags: ["🥈 Filigree Work", "🏙️ Millennium City", "⚔️ Historic Capital"],
+    awards: ["🏆 Smart City Mission", "🥇 Cleanest City Award 2023", "⭐ AMRUT City", "🎖️ DISHA Best District 2022"],
     pop: "2.62M", area: "3,932 km²", lit: "82.36%", blocks: 14,
+    villages: 1807, gps: 241, subdivisions: 3, tehsils: 14,
     devScore: 74,
     scores: { governance: 78, education: 80, healthcare: 72, infrastructure: 76, water: 68, economy: 79, safety: 71, agriculture: 60, digital: 73, welfare: 75 },
     weather: { temp: "34°C", condition: "Partly Cloudy", humidity: "72%", wind: "12 km/h", rain: "0 mm", forecast: "Thunderstorm expected by evening" },
@@ -81,7 +83,9 @@ export const DISTRICT_DATA = {
   puri: {
     odia: "ପୁରୀ", tagline: "City of Lord Jagannath",
     tags: ["🛕 Jagannath Temple", "🏖️ Sea Beach", "🎡 Rath Yatra"],
+    awards: ["🏆 UNESCO Creative City", "🥇 Heritage Tourism Award 2023", "⭐ AMRUT City", "🎖️ Swachh Survekshan 2022"],
     pop: "1.50M", area: "3,051 km²", lit: "85.02%", blocks: 11,
+    villages: 1054, gps: 167, subdivisions: 2, tehsils: 11,
     devScore: 71,
     scores: { governance: 72, education: 82, healthcare: 68, infrastructure: 70, water: 65, economy: 74, safety: 69, agriculture: 71, digital: 68, welfare: 72 },
     weather: { temp: "32°C", condition: "Humid & Sunny", humidity: "83%", wind: "18 km/h", rain: "0 mm", forecast: "Sea breeze, clear skies" },
