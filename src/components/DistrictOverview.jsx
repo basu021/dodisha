@@ -197,42 +197,53 @@ export default function DistrictOverview({ district }) {
             </div>
           )}
 
-          {/* ⑤ Stats strip — full-width, flush to bottom */}
-          <div style={{
-            borderTop: `1px solid ${C.heroBdr}`,
-            display: "flex",
-            flexWrap: "wrap",
-          }}>
+          {/* ⑤ Stats strip — key metrics */}
+          <div style={{ borderTop: `1px solid ${C.heroBdr}`, display: "flex", flexWrap: "wrap" }}>
             {[
-              { icon: "👥", label: "Population",       value: data.pop },
-              { icon: "📐", label: "Total Area",        value: data.area },
-              { icon: "📚", label: "Literacy Rate",     value: data.lit },
-              { icon: "🏘️", label: "Blocks",            value: data.blocks },
-              { icon: "🏡", label: "Villages",          value: data.villages?.toLocaleString() ?? "—" },
-              { icon: "🗳️", label: "Gram Panchayats",   value: data.gps?.toLocaleString() ?? "—" },
-              { icon: "🗂️", label: "Subdivisions",      value: data.subdivisions ?? "—" },
-              { icon: "📊", label: "Dev Index",         value: `${data.devScore}/100` },
+              { icon: "👥", label: "Population",   value: data.pop },
+              { icon: "📐", label: "Total Area",    value: data.area },
+              { icon: "📚", label: "Literacy Rate", value: data.lit },
+              { icon: "📊", label: "Dev Index",     value: `${data.devScore}/100` },
             ].map(({ icon, label, value }, i, arr) => (
               <div key={label} style={{
-                flex: "1 1 120px",
-                padding: "16px 18px",
+                flex: "1 1 140px", padding: "14px 20px",
                 borderRight: i < arr.length - 1 ? `1px solid ${C.heroBdr}` : "none",
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
+                display: "flex", flexDirection: "column", gap: 2,
               }}>
                 <span style={{ fontSize: "0.65rem", color: C.muted, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.07em" }}>
                   {icon} {label}
                 </span>
                 <span style={{
-                  fontSize: "1.1rem",
-                  fontWeight: 800,
-                  color: label === "Dev Index"
-                    ? (data.devScore >= 70 ? "#059669" : "#d97706")
-                    : C.text,
-                  letterSpacing: "-0.3px",
-                  lineHeight: 1.2,
+                  fontSize: "1.15rem", fontWeight: 800, letterSpacing: "-0.3px", lineHeight: 1.2,
+                  color: label === "Dev Index" ? (data.devScore >= 70 ? "#059669" : "#d97706") : C.text,
                 }}>
+                  {value}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* ⑥ Admin units strip */}
+          <div style={{ borderTop: `1px solid ${C.heroBdr}`, display: "flex", flexWrap: "wrap", background: isDark ? "#161f2e" : "#fafbfc" }}>
+            {[
+              { icon: "🗂️", label: "Subdivisions",        value: data.subdivisions ?? "—" },
+              { icon: "🏘️", label: "Blocks",              value: data.blocks ?? "—" },
+              { icon: "📋", label: "Tahasils",            value: data.tehsils ?? "—" },
+              { icon: "🚔", label: "Police Stations",     value: data.policeStations ?? "—" },
+              { icon: "🗳️", label: "Gram Panchayats",     value: data.gps?.toLocaleString() ?? "—" },
+              { icon: "🏙️", label: "Municipalities",      value: data.municipalities ?? "—" },
+              { icon: "🏛️", label: "NACs",                value: data.nacs ?? "—" },
+              { icon: "🏢", label: "Municipal Corps",     value: data.municipalCorps ?? "—" },
+            ].map(({ icon, label, value }, i, arr) => (
+              <div key={label} style={{
+                flex: "1 1 100px", padding: "10px 16px",
+                borderRight: i < arr.length - 1 ? `1px solid ${C.heroBdr}` : "none",
+                display: "flex", flexDirection: "column", gap: 1,
+              }}>
+                <span style={{ fontSize: "0.6rem", color: C.muted, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                  {icon} {label}
+                </span>
+                <span style={{ fontSize: "1rem", fontWeight: 800, color: C.text, letterSpacing: "-0.2px", lineHeight: 1.3 }}>
                   {value}
                 </span>
               </div>
