@@ -10,8 +10,12 @@ const CATEGORIES = [
   { key: "economy",        label: "Economy",        icon: "💰" },
   { key: "safety",         label: "Safety",         icon: "👮" },
   { key: "agriculture",    label: "Agriculture",    icon: "🌾" },
-  { key: "digital",        label: "Digital",        icon: "📡" },
+  { key: "digital",        label: "Digital",        icon: "📱" },
   { key: "welfare",        label: "Welfare",        icon: "🤝" },
+  { key: "environment",    label: "Environment",    icon: "🌿" },
+  { key: "connectivity",   label: "Connectivity",   icon: "🚌" },
+  { key: "livelihood",     label: "Livelihood",     icon: "💼" },
+  { key: "sanitation",     label: "Sanitation",     icon: "🧹" },
 ];
 
 function scoreColor(v) {
@@ -46,7 +50,7 @@ export default function DevelopmentScore({ data, devScore, name, isDark }) {
         {/* Left: label */}
         <div>
           <h2 style={{ margin: 0, fontWeight: 800, fontSize: "1rem", color: c.text }}>Development Index</h2>
-          <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: c.muted }}>Composite score across 10 civic dimensions</p>
+          <p style={{ margin: "3px 0 0", fontSize: "0.75rem", color: c.muted }}>Composite score across 14 civic dimensions</p>
         </div>
 
         {/* Right: dial */}

@@ -5,6 +5,7 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import OdishaMap        from "@/components/overview/OdishaMap";
 import DevelopmentScore from "@/components/overview/DevelopmentScore";
 import { WeatherCard, DamCard, CropCard, AlertCard, SchemeCard } from "@/components/overview/LiveData";
+import ScoreBoard      from "@/components/overview/ScoreBoard";
 import Infrastructure   from "@/components/overview/Infrastructure";
 import Leadership       from "@/components/overview/Leadership";
 import NewsIntel        from "@/components/overview/NewsIntel";
@@ -268,6 +269,11 @@ export default function DistrictOverview({ district }) {
             <OdishaMap activeDistrict={district} isDark={isDark} />
           </div>
           <DevelopmentScore data={data.scores} devScore={data.devScore} name={name} isDark={isDark} />
+        </div>
+
+        {/* ── Score Board ── */}
+        <div style={{ ...section }}>
+          <ScoreBoard scores={data.scores} isDark={isDark} />
         </div>
 
         {/* ── Live data row ── */}
