@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import OdishaMap        from "@/components/overview/OdishaMap";
-import DevelopmentScore from "@/components/overview/DevelopmentScore";
 import { WeatherCard, DamCard, CropCard, AlertCard, SchemeCard } from "@/components/overview/LiveData";
 import ScoreBoard      from "@/components/overview/ScoreBoard";
 import Infrastructure   from "@/components/overview/Infrastructure";
@@ -262,13 +261,12 @@ export default function DistrictOverview({ district }) {
           <MiniTrend data={data.budget_trend}     dataKey="alloc" label="Budget Allocation (₹ Cr)" color="#0891b2" isDark={isDark} />
         </div>
 
-        {/* ── Map + Development Score ── */}
-        <div style={{ ...section, display: "grid", gridTemplateColumns: "1fr minmax(280px,360px)", gap: 20, alignItems: "start" }}>
+        {/* ── Map ── */}
+        <div style={{ ...section }}>
           <div style={{ background: C.card, border: `1px solid ${C.bdr}`, borderRadius: 14, padding: "24px", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
             <SectionHeading title="📍 District on Odisha Map" sub="Click any district dot to navigate · Hover for name" isDark={isDark} />
             <OdishaMap activeDistrict={district} isDark={isDark} />
           </div>
-          <DevelopmentScore data={data.scores} devScore={data.devScore} name={name} isDark={isDark} />
         </div>
 
         {/* ── Score Board ── */}
